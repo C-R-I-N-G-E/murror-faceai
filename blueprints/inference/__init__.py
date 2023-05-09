@@ -146,6 +146,7 @@ def compare():
         return jsonify({"msg": "Incorrect request format"}), 400
 
 
+# TODO: add filter by gender preference
 @inference.route('/distance/<int:user_id>', methods=["GET"])
 def get_similar_users(user_id: int):
     result = face_distances_collection.find({
