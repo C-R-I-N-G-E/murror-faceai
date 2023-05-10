@@ -1,6 +1,5 @@
 import werkzeug.datastructures
 from flask_restplus import Namespace, Resource, fields
-from http import HTTPStatus
 
 from werkzeug.datastructures import FileStorage
 
@@ -76,33 +75,3 @@ class SetPreference(Resource):
         return {
             "msg": "Upload successful"
         }, 201
-
-
-@inference.route('/compare')
-class Compare(Resource):
-    """Compare two people faces resulting in similarity distance metric"""
-
-    @inference.expect(compare_parser)
-    @inference.marshal_with(compare_model, code=HTTPStatus.ACCEPTED)
-    def get(self):
-        """Compare two people faces resulting in similarity distance metric"""
-
-        return {
-            "msg": "Success",
-            "result": {"score": 0.1}
-        }, 200
-
-
-@inference.route('/distance/<int:user_id>')
-class Distance(Resource):
-    """Get list of recommended users, updates on each request"""
-
-    @inference.marshal_with(difference_list_model, code=HTTPStatus.ACCEPTED)
-    def get(self):
-        return {
-            "msg": "Success",
-            "result": [
-                {"user_id": 20, "distance": 0.1},
-                {"user_id": 40, "distance": 0.9}
-            ]
-        }
