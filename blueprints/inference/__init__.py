@@ -9,13 +9,13 @@ from loguru import logger
 from pymongo import MongoClient
 
 try:
-    conn = psycopg2.connect('postgresql://postgres:qwerty@localhost:5432/murror')
+    conn = psycopg2.connect('postgresql://postgres:qwerty@postgres:5432/murror')
     logger.info("Connected to database")
 except Exception as e:
     logger.error("Can't connect to database")
     logger.error(e)
 
-client = MongoClient("mongodb://localhost:27017/")
+client = MongoClient("mongodb://mongo:27017/")
 db = client["murror"]
 faces_collection = db["faces"]
 preferences_collection = db["preferences"]
