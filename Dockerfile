@@ -1,5 +1,4 @@
-FROM nvidia/cuda:11.4.0-cudnn8-runtime-ubuntu20.04
-
+FROM nvidia/cuda:11.4.3-runtime-ubuntu20.04
 # Python 3.8 and pip3
 RUN apt-get update -y
 RUN DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get -y install tzdata
